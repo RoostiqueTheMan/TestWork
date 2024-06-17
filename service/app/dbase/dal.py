@@ -2,11 +2,12 @@
 
 from typing import List, Optional
 
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.dbase.abstracts import TableDAL
 from app.dbase.orm import Client, Customer, User
 from app.models import CommonData
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
 
 class UserDAL(TableDAL):

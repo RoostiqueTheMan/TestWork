@@ -2,11 +2,12 @@
 
 from asyncio import TimeoutError, wait_for
 
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
 from app.dbase.session import get_session
 from app.models import Response
-from fastapi import APIRouter, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter()
 TIMEOUT = 2

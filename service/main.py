@@ -4,10 +4,11 @@ import os
 
 import dotenv
 import uvicorn
-from app.routers import records
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+
+from app.routers import records
 
 __all__ = []
 

@@ -1,11 +1,15 @@
 """Module with async session creator."""
 import os
 
-from app.containers import PostgresConnectionParams
 from dotenv import load_dotenv
-from sqlalchemy.ext.asyncio import (AsyncEngine, AsyncSession,
-                                    create_async_engine)
+from sqlalchemy.ext.asyncio import (
+    AsyncEngine,
+    AsyncSession,
+    create_async_engine
+)
 from sqlalchemy.orm import sessionmaker
+
+from app.containers import PostgresConnectionParams
 
 load_dotenv()
 
