@@ -1,10 +1,11 @@
 """Module with FastAPI routers."""
 
 from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
 from service.app.dbase.session import get_session
 from service.app.models import Response
-from sqlalchemy.ext.asyncio import AsyncSession
 
 __all__ = ['router']
 

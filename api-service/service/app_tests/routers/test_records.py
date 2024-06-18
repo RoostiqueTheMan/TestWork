@@ -3,6 +3,7 @@
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
+
 from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
 from service.app.models import IdNameInfo, Response
 from service.app.routers.records import get_all_records

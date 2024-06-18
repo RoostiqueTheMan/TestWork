@@ -2,10 +2,11 @@
 from unittest.mock import Mock, patch
 
 import pytest
-from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
-from service.app.models import IdNameInfo
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
+
+from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from service.app.models import IdNameInfo
 
 
 class TestUserDAL:
