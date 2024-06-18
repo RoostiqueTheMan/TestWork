@@ -15,16 +15,7 @@ __all__ = []
 dotenv.load_dotenv()
 
 
-def get_app(root_path: str) -> FastAPI:
-    try:
-        if bool(int(os.getenv('IS_DEBUG'))):
-            return FastAPI()
-    except TypeError:
-        pass
-    return FastAPI(root_path=root_path)
-
-
-app = get_app(root_path='')
+app = FastAPI(root_path='')
 app.include_router(records.router)
 app.add_middleware(
     CORSMiddleware,
@@ -38,7 +29,7 @@ app.add_middleware(
 async def check_service_alive() -> JSONResponse:
     """Return ping-pong response.
 
-    Returns: dict object with status and message
+    Returns: JSONResponse
 
     """
     return JSONResponse(
@@ -50,13 +41,6 @@ if __name__ == '__main__':
     uvicorn.run(
         'main:app',
         reload=True,
-        host='127.0.0.1',
-        port=1488
+        host=os.getenv('APP_HOST'),
+        port=int(os.getenv('APP_PORT'))
     )
-# if __name__ == '__main__':
-#     uvicorn.run(
-#         'main:app',
-#         reload=True,
-#         host=os.getenv('APP_HOST'),
-#         port=int(os.getenv('APP_PORT'))
-#     )

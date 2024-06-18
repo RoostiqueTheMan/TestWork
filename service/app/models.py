@@ -4,6 +4,8 @@ from typing import List
 
 from pydantic import BaseModel, Field
 
+__all__ = ['IdNameInfo', 'Response']
+
 
 class CustomBaseModel(BaseModel):
     """Pydantic custom base model."""
@@ -14,7 +16,7 @@ class CustomBaseModel(BaseModel):
         populate_by_name = True
 
 
-class CommonData(CustomBaseModel):
+class IdNameInfo(CustomBaseModel):
     """Class with common tables data.
 
     Args:
@@ -36,4 +38,4 @@ class Response(CustomBaseModel):
     """
 
     status: bool = Field(alias='Status', default=True)
-    data: List[CommonData] = Field(alias='Data')
+    data: List[IdNameInfo] = Field(alias='Data')

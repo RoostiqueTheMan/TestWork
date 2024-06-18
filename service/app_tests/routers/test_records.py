@@ -1,15 +1,17 @@
-from unittest.mock import Mock, patch, AsyncMock
+"""Module with tests for routers."""
+
+from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
 
 from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
-from app.models import CommonData
-
+from app.models import IdNameInfo, Response
 from app.routers.records import get_all_records
-from app.models import Response
 
 
 class TestRecords:
+    """Test records routers class."""
+
     @pytest.mark.asyncio
     @patch.object(UserDAL, 'get_all')
     @patch.object(ClientDAL, 'get_all')
@@ -20,19 +22,29 @@ class TestRecords:
             get_all_clients: Mock,
             get_all_users: Mock
     ):
+        """Test get_all_records route, check correct response structure...
+
+        (records ids increasing)
+
+        Args:
+            get_all_customers: mock get_all method
+            get_all_users: mock get_all method
+            get_all_clients: mock get_all method
+        """
         users = [
-            CommonData(id_=i, name=f'test-{i}') for i in range(3)
+            IdNameInfo(id_=i, name=f'test-{i}') for i in range(3)
         ]
         clients = [
-            CommonData(id_=i, name=f'test-{i}') for i in range(3, 6)
+            IdNameInfo(id_=i, name=f'test-{i}') for i in range(9, 3, -1)
         ]
         customers = [
-            CommonData(id_=i, name=f'test-{i}') for i in range(6, 9)
+            IdNameInfo(id_=i, name=f'test-{i}') for i in range(20, 9, -1)
         ]
         expected_value = []
         expected_value.extend(users)
         expected_value.extend(clients)
         expected_value.extend(customers)
+        expected_value.sort(key=lambda data: data.id_)
 
         get_all_users.return_value = users
         get_all_clients.return_value = clients

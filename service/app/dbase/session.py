@@ -2,20 +2,17 @@
 import os
 
 from dotenv import load_dotenv
-from sqlalchemy.ext.asyncio import (
-    AsyncEngine,
-    AsyncSession,
-    create_async_engine
-)
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.containers import PostgresConnectionParams
 
 load_dotenv()
+__all__ = ['Connection', 'get_session']
 
 
-class CustomConnection:
-    """Class for create async session."""
+class Connection:
+    """Class for creating async session."""
 
     def __init__(self) -> None:
         """Initialize class method.
@@ -29,26 +26,15 @@ class CustomConnection:
             user=os.getenv('POSTGRES_USER'),
             password=os.getenv('POSTGRES_PASSWORD')
         )
-
         self.__engine = create_async_engine(
             self.__parameters.connection_string,
             echo=False
         )
-
         self.__async_session = sessionmaker(
             bind=self.__engine,
             class_=AsyncSession,
             expire_on_commit=False
         )
-
-    @property
-    def engine(self) -> AsyncEngine:
-        """Return async engine.
-
-        Returns: AsyncEngine
-
-        """
-        return self.__engine
 
     @property
     def async_session(self) -> AsyncSession:
@@ -66,6 +52,6 @@ async def get_session() -> AsyncSession:
     Returns: AsyncSession
 
     """
-    conn = CustomConnection()
+    conn = Connection()
     async with conn.async_session as session:
         yield session

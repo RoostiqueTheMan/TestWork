@@ -3,8 +3,9 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
+
+__all__ = ['TableDAL']
 
 
 class TableDAL(ABC):
@@ -27,19 +28,6 @@ class TableDAL(ABC):
         Returns: AsyncSession object
         """
         return self.__session
-
-    async def is_query_success(self) -> bool:
-        """Check that changing query is success.
-
-        Returns: True if query success, otherwise - False
-        """
-        try:
-            await self.session.commit()
-            return True
-
-        except DBAPIError:
-            await self.session.rollback()
-            return False
 
     @abstractmethod
     async def get_all(self) -> List[object]:

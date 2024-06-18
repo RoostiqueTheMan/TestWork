@@ -3,6 +3,8 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import DeclarativeBase
 
+__all__ = ['User', 'Client', 'Customer']
+
 
 class Base(DeclarativeBase):
     """Base ORM class."""
@@ -23,18 +25,18 @@ class Base(DeclarativeBase):
 
 
 class User(Base):
-    """User table model."""
+    """User table ORM model."""
 
     __tablename__ = 'users'
 
 
 class Client(Base):
-    """Client table model."""
+    """Client table ORM model."""
 
     __tablename__ = 'clients'
 
 
 class Customer(Base):
-    """Customer table model."""
+    """Customer table ORM model."""
 
     __tablename__ = 'customers'
