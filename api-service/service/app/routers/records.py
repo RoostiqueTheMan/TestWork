@@ -3,7 +3,8 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from app.dbase.dal import CommonDAL
+from app.dbase.orm import Client, Customer, User
 from app.dbase.session import get_session
 from app.models import Response
 
@@ -23,9 +24,10 @@ async def get_all_records(
 
     Returns: list with data records
     """
-    users = await UserDAL(session=session).get_all()
-    clients = await ClientDAL(session=session).get_all()
-    customers = await CustomerDAL(session=session).get_all()
+    dal = CommonDAL(session=session)
+    users = await dal.get_all(table=User)
+    clients = await dal.get_all(table=Client)
+    customers = await dal.get_all(table=Customer)
 
     users.extend(clients)
     users.extend(customers)

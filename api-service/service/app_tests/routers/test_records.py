@@ -4,7 +4,7 @@ from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
 
-from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from app.dbase.dal import CommonDAL
 from app.models import IdNameInfo, Response
 from app.routers.records import get_all_records
 
@@ -13,23 +13,17 @@ class TestRecords:
     """Test records routers class."""
 
     @pytest.mark.asyncio
-    @patch.object(UserDAL, 'get_all')
-    @patch.object(ClientDAL, 'get_all')
-    @patch.object(CustomerDAL, 'get_all')
+    @patch.object(CommonDAL, 'get_all')
     async def test_get_all_records(
             self,
-            get_all_customers: Mock,
-            get_all_clients: Mock,
-            get_all_users: Mock
+            mock_get_all: Mock
     ):
         """Test get_all_records route, check correct response structure...
 
         (records ids increasing)
 
         Args:
-            get_all_customers: mock get_all method
-            get_all_users: mock get_all method
-            get_all_clients: mock get_all method
+            mock_get_all: mock get_all method
         """
         users = [
             IdNameInfo(id_=i, name=f'test-{i}') for i in range(3)
@@ -45,10 +39,7 @@ class TestRecords:
         expected_value.extend(clients)
         expected_value.extend(customers)
         expected_value.sort(key=lambda data: data.id_)
-
-        get_all_users.return_value = users
-        get_all_clients.return_value = clients
-        get_all_customers.return_value = customers
+        mock_get_all.side_effect = [users, clients, customers]
 
         response = await get_all_records(session=AsyncMock())
 

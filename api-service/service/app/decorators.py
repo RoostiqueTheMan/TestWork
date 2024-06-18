@@ -13,13 +13,13 @@ TIMEOUT = 2
 def check_timeout(func: Callable) -> Callable:
     """Decorate function."""
 
-    async def wrapper(*args) -> List[Optional[IdNameInfo]]:
+    async def wrapper(*args, **kwargs) -> List[Optional[IdNameInfo]]:
         """Check query executing time.
 
         Returns: list with pydantic models
         """
         try:
-            records = await wait_for(func(*args), TIMEOUT)
+            records = await wait_for(func(*args, **kwargs), TIMEOUT)
 
         except TimeoutError:
             records = []
