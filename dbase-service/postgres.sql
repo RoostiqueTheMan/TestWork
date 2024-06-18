@@ -36,7 +36,7 @@ VALUES
     (39, 'Record39'),
     (40, 'Record40');
 
-INSERT INTO records (id, name, source)
+INSERT INTO clients (id, name)
 VALUES
     (11, 'Record11'),
     (12, 'Record12'),
@@ -59,7 +59,7 @@ VALUES
     (49, 'Record49'),
     (50, 'Record50');
 
-INSERT INTO records (id, name, source)
+INSERT INTO customers (id, name)
 VALUES
     (21, 'Record21'),
     (22, 'Record22'),
