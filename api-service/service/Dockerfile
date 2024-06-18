@@ -1,15 +1,12 @@
 FROM python:3.8.12
 
-RUN python3.8 -m pip install poetry
-RUN poetry config virtualenvs.create false
-
 ENV SERVICE_FOLDER=/service
 
 RUN mkdir $SERVICE_FOLDER
 
 COPY .. $SERVICE_FOLDER
 
-RUN cd $SERVICE_FOLDER && poetry install --only main
+RUN cd $SERVICE_FOLDER && pip install requirements.txt
 
 WORKDIR $SERVICE_FOLDER
 
