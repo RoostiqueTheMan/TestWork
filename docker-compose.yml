@@ -58,6 +58,8 @@ services:
         depends_on:
             dbase-service:
                 condition: service_healthy
+        ports:
+            - "1477:1477"
 
 networks:
     custom-network:

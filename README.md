@@ -16,7 +16,7 @@ git clone git@github.com:RoostiqueTheMan/TestWork.git
 
 Go to directory with project
 
-## Running the Application with Docker Compose
+## Running the Application with Docker Compose locally (on your host-machine)
 
 To run the application using Docker Compose, ensure you have Docker 
 and Docker Compose installed on your machine. Follow these steps:
@@ -27,7 +27,7 @@ and Docker Compose installed on your machine. Follow these steps:
     docker compose up --build
 ```
     
-2. The application will be available at: [http://127.0.0.1:1477](http://127.0.0.1:1477).
+2. The application will be available at: [127.0.0.1:1477](http://127.0.0.1:1477).
 
 3. To stop the containers, run:
     
@@ -40,11 +40,11 @@ and Docker Compose installed on your machine. Follow these steps:
 Once the application is running, you can access the interactive API 
 documentation at the following URLs:
 
-- Swagger UI: [http://172.20.0.8:1477/docs](http://172.20.0.8:1477/docs)
-- ReDoc: [http://172.20.0.8:1477/redoc](http://172.20.0.8:1477/redoc)
-- Health check: http://172.20.0.8:1477/ping
+- Swagger UI: [http://127.0.0.1:1477/docs](http://127.0.0.1:1477/docs)
+- ReDoc: [http://127.0.0.1:1477/redoc](http://127.0.0.1:1477/redoc)
+- Health check: http://127.0.0.1:1477/ping
 - To get all records from the database, use the following 
-endpoint:: http://172.20.0.8:1477/get-all
+endpoint:: http://127.0.0.1:1477/get-all
  
 ## Modules
 
