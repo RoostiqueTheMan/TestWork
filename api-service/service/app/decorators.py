@@ -1,7 +1,7 @@
 """Module with decorators."""
 
 from typing import Callable, List, Optional
-from app.models import IdNameInfo
+from service.app.models import IdNameInfo
 from asyncio import wait_for, TimeoutError
 
 __all__ = ['check_timeout']

@@ -4,10 +4,10 @@ from typing import List, Optional
 
 from sqlalchemy import select
 
-from app.dbase.abstracts import TableDAL
-from app.dbase.orm import Client, Customer, User
-from app.decorators import check_timeout
-from app.models import IdNameInfo
+from service.app.dbase.abstracts import TableDAL
+from service.app.dbase.orm import Client, Customer, User
+from service.app.decorators import check_timeout
+from service.app.models import IdNameInfo
 from sqlalchemy.exc import SQLAlchemyError
 
 __all__ = ['UserDAL', 'ClientDAL', 'CustomerDAL']

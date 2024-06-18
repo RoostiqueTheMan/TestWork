@@ -4,9 +4,9 @@ from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
 
-from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
-from app.models import IdNameInfo, Response
-from app.routers.records import get_all_records
+from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from service.app.models import IdNameInfo, Response
+from service.app.routers.records import get_all_records
 
 
 class TestRecords:

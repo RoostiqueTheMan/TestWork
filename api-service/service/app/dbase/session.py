@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.containers import PostgresConnectionParams
+from service.app.containers import PostgresConnectionParams
 
 load_dotenv()
 __all__ = ['Connection', 'get_session']

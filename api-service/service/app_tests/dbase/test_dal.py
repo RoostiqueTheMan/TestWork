@@ -1,12 +1,11 @@
 """Module with DAL classes tests."""
-import time
 from unittest.mock import Mock, patch
 
 import pytest
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
-from app.models import IdNameInfo
+from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from service.app.models import IdNameInfo
 from sqlalchemy.exc import SQLAlchemyError
 
 
@@ -137,4 +136,3 @@ class TestCustomerDAL:
         actual_value = await CustomerDAL(session=session).get_all()
 
         assert actual_value == []
-declaration = 1
