@@ -13,8 +13,7 @@ class Base(DeclarativeBase):
         name='id',
         type_=Integer,
         primary_key=True,
-        index=True,
-        autoincrement=True
+        index=True
     )
     name = Column(
         name='name',

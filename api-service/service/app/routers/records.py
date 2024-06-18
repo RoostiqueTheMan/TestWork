@@ -10,7 +10,6 @@ from service.app.models import Response
 __all__ = ['router']
 
 router = APIRouter()
-TIMEOUT = 2
 
 
 @router.get('/get-all')
