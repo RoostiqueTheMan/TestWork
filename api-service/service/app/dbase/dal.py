@@ -2,12 +2,11 @@
 
 from typing import List, Optional
 
-from sqlalchemy import select
-
 from service.app.dbase.abstracts import TableDAL
 from service.app.dbase.orm import Client, Customer, User
 from service.app.decorators import check_timeout
 from service.app.models import IdNameInfo
+from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 
 __all__ = ['UserDAL', 'ClientDAL', 'CustomerDAL']
