@@ -4,14 +4,44 @@ from typing import List, Optional
 
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from service.app.dbase.abstracts import TableDAL
-from service.app.dbase.orm import Client, Customer, User
-from service.app.decorators import check_timeout
-from service.app.models import IdNameInfo
+from app.dbase.abstracts import TableDAL
+from app.dbase.orm import Client, Customer, User
+from app.decorators import check_timeout
+from app.models import IdNameInfo
 
 __all__ = ['UserDAL', 'ClientDAL', 'CustomerDAL']
 
+
+class CommonTableDAL:
+    """Common class for dbase tables."""
+
+    def __init__(self, session: AsyncSession) -> None:
+        """Initialize class instance.
+
+        Args:
+            session: AsyncSession
+
+        Returns: None
+        """
+        self.__session = session
+
+    @property
+    def session(self) -> AsyncSession:
+        """Return AsyncSession object.
+
+        Returns: AsyncSession object
+        """
+        return self.__session
+
+    @abstractmethod
+    async def get_all(self) -> List[object]:
+        """Get all records from table.
+
+        Returns: list with ORM models
+        """
+        pass
 
 class UserDAL(TableDAL):
     """User table DAL class."""

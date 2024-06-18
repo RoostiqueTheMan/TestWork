@@ -40,11 +40,11 @@ and Docker Compose installed on your machine. Follow these steps:
 Once the application is running, you can access the interactive API 
 documentation at the following URLs:
 
-- Swagger UI: [http://127.0.0.1:1477/docs](http://127.0.0.1:1477/docs)
-- ReDoc: [http://127.0.0.1:1477/redoc](http://127.0.0.1:1477/redoc)
-- Health check: http://127.0.0.1:1477/ping
+- Swagger UI: [http://172.20.0.8:1477/docs](http://172.20.0.8:1477/docs)
+- ReDoc: [http://172.20.0.8:1477/redoc](http://172.20.0.8:1477/redoc)
+- Health check: http://172.20.0.8:1477/ping
 - To get all records from the database, use the following 
-endpoint:: http://127.0.0.1:1477/get-all
+endpoint:: http://172.20.0.8:1477/get-all
  
 ## Modules
 

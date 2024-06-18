@@ -3,7 +3,7 @@
 from asyncio import TimeoutError, wait_for
 from typing import Callable, List, Optional
 
-from service.app.models import IdNameInfo
+from app.models import IdNameInfo
 
 __all__ = ['check_timeout']
 

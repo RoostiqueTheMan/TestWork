@@ -6,7 +6,7 @@ RUN mkdir $SERVICE_FOLDER
 
 COPY .. $SERVICE_FOLDER
 
-RUN cd $SERVICE_FOLDER && pip install requirements.txt
+RUN cd $SERVICE_FOLDER && pip install -r requirements.txt
 
 WORKDIR $SERVICE_FOLDER
 

@@ -3,9 +3,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from service.app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
-from service.app.dbase.session import get_session
-from service.app.models import Response
+from app.dbase.dal import ClientDAL, CustomerDAL, UserDAL
+from app.dbase.session import get_session
+from app.models import Response
 
 __all__ = ['router']
 

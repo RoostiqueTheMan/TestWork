@@ -13,7 +13,7 @@ services:
             - POSTGRES_PORT=5678
             - POSTGRES_USER=roostique
             - POSTGRES_PASSWORD=password
-            - POSTGRES_DB=postgres
+            - POSTGRES_DB=test-dbase
         command: -p 3333
         networks:
             custom-network:
@@ -23,7 +23,7 @@ services:
                    "pg_isready
                     -h dbase-api-service
                     -p 3333
-                    -d postgres
+                    -d test-dbase
                     -U roostique"
             ]
             interval: 10s
@@ -39,9 +39,9 @@ services:
         environment:
             - POSTGRES_HOST=dbase-service
             - POSTGRES_PORT=3333
-            - POSTGRES_USER=postgres
+            - POSTGRES_USER=roostique
             - POSTGRES_PASSWORD=password
-            - POSTGRES_DB=postgres
+            - POSTGRES_DB=test-dbase
             - APP_HOST=api-service
             - APP_PORT=1477
         networks:
